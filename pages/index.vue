@@ -12,6 +12,11 @@
       </b-collapse>
     </b-navbar>
   </div>
+  <div
+    :class="!clicked ? 'lg' : ''"
+    :style="clicked ? 'margin-left: -320px' : 'margi-left: 0'"
+    class="side-nav"
+  ></div>
 </template>
 
 <script>
