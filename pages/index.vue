@@ -1,27 +1,24 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">VueCharts</b-navbar-brand>
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item href="#">Chart 1</b-nav-item>
-          <b-nav-item href="#">Chart 2</b-nav-item>
-          <b-nav-item href="#" disabled>Chart 3</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+    <topMenu></topMenu>
+    <b-container fluid class="mt-1">
+      <b-row>
+        <b-col xs="12">
+          <mainChart></mainChart>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
-  <div
-    :class="!clicked ? 'lg' : ''"
-    :style="clicked ? 'margin-left: -320px' : 'margi-left: 0'"
-    class="side-nav"
-  ></div>
 </template>
 
 <script>
+import topMenu from '~/components/topMenu.vue'
+import mainChart from '~/components/mainChart.vue'
 export default {
-  components: {}
+  components: {
+    topMenu,
+    mainChart
+  }
 }
 </script>
 
