@@ -5,24 +5,17 @@ import { Line } from 'vue-chartjs'
 // Exporting this so it can be used in other components
 export default {
   extends: Line,
+  props: {
+    examples: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       datacollection: {
         // Data to be represented on x-axis
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
-        ],
+        labels: [this.examples[0].id],
         datasets: [
           {
             label: 'Data One',

@@ -4,8 +4,9 @@
     <b-container>
       <b-row>
         <b-col xs="12">
-          <LineChart></LineChart>
+          <LineChart :examples="examples" :test="test"></LineChart>
         </b-col>
+        <b-button @click="getData">Click</b-button>
       </b-row>
     </b-container>
   </div>
@@ -21,7 +22,8 @@ export default {
   },
   data() {
     return {
-      test: {}
+      test: {},
+      examples: []
     }
   },
   mounted() {
@@ -29,12 +31,12 @@ export default {
   },
   methods: {
     getData() {
-      this.$axios
-        .get('http://www.omdbapi.com/?i=tt3896198&apikey=fc497c85')
-        .then((res) => {
-          this.console.log(res)
-          this.test = res
-        })
+      this.$axios.get('https://api.coinlore.com/api/tickers/').then((res) => {
+        // eslint-disable-next-line no-console
+        console.log(res)
+        this.test = res
+        this.examples = res.data.data
+      })
     }
   }
 }
