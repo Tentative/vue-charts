@@ -1,10 +1,10 @@
 <template>
   <div>
     <topMenu></topMenu>
-    <b-container fluid class="mt-1">
+    <b-container>
       <b-row>
         <b-col xs="12">
-          <mainChart></mainChart>
+          <LineChart></LineChart>
         </b-col>
       </b-row>
     </b-container>
@@ -13,11 +13,29 @@
 
 <script>
 import topMenu from '~/components/topMenu.vue'
-import mainChart from '~/components/mainChart.vue'
+import LineChart from '~/components/LineChart.vue'
 export default {
   components: {
     topMenu,
-    mainChart
+    LineChart
+  },
+  data() {
+    return {
+      test: {}
+    }
+  },
+  mounted() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      this.$axios
+        .get('http://www.omdbapi.com/?i=tt3896198&apikey=fc497c85')
+        .then((res) => {
+          this.console.log(res)
+          this.test = res
+        })
+    }
   }
 }
 </script>
