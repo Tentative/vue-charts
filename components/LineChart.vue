@@ -1,12 +1,17 @@
 <script>
 // Importing Line class from the vue-chartjs wrapper
-import { Line } from 'vue-chartjs'
+import { Line, Bar } from 'vue-chartjs'
 
 // Exporting this so it can be used in other components
 export default {
   extends: Line,
+  Bar,
   props: {
-    bitcoin: {
+    usd: {
+      type: Object,
+      required: true
+    },
+    indexes: {
       type: Array,
       required: true
     }
@@ -15,16 +20,35 @@ export default {
     return {
       datacollection: {
         // Data to be represented on x-axis
-        labels: [this.bitcoin],
+        labels: ['Price A', 'Price B'],
         datasets: [
           {
             label: 'Data One',
-            backgroundColor: '#f87979',
+            backgroundColor: '',
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
             // Data to be represented on y-axis
-            data: [40, 20, 30, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+            data: [Math.floor(Math.random() * 9) + 1, 2, 3, 4, 5, 6, 7]
+          },
+          {
+            label: 'Data Two',
+            backgroundColor: '',
+            pointBackgroundColor: 'white',
+            borderWidth: 1,
+            pointBorderColor: '#249EBF',
+            // Data to be represented on y-axis
+            data: [Math.floor(Math.random() * 9) + 1, 1, 3, 4]
+          },
+          {
+            label: 'Data Two',
+            backgroundColor: '',
+            pointBackgroundColor: 'white',
+            borderWidth: 1,
+            pointBorderColor: '#249EBF',
+            // Data to be represented on y-axis
+            data: [Math.floor(Math.random() * 9) + 1, 1, 3, 4],
+            type: 'bar'
           }
         ]
       },

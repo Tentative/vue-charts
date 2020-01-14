@@ -1,10 +1,10 @@
 <template>
   <div>
     <topMenu></topMenu>
-    <b-container v-if="examples">
+    <b-container v-if="indexes">
       <b-row>
         <b-col xs="12">
-          <LineChart :indexes="indexes" :bitcoin="bitcoin"></LineChart>
+          <LineChart :indexes="indexes" :usd="usd"></LineChart>
         </b-col>
         <b-button @click="getData">Click</b-button>
       </b-row>
@@ -24,21 +24,32 @@ export default {
   data() {
     return {
       indexes: [],
-      bitcoin: []
+      usd: {}
     }
   },
   created() {
     this.getData()
   },
+  mounted() {
+    this.getIndex()
+  },
   methods: {
     async getData() {
-      await axios.get('https://api.coinlore.com/api/tickers/').then((res) => {
+      await axios
+        .get('https://financialmodelingprep.com/api/v3/company/profile/USD')
+        .then((res) => {
+          // eslint-disable-next-line no-console
+          console.log(res)
+          this.usd = res.data.profile
+          // eslint-disable-next-line no-console
+          console.log(this.usd)
+        })
+    },
+    getIndex() {
+      for (let i = 0; i < 3; i++) {
         // eslint-disable-next-line no-console
-        console.log(res)
-        this.bitcoin = res.data.data
-        // eslint-disable-next-line no-console
-        console.log(this.bitcoin)
-      })
+        console.log('Block statement execution no.' + i)
+      }
     }
   }
 }
