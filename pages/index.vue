@@ -1,10 +1,10 @@
 <template>
   <div>
     <topMenu></topMenu>
-    <b-container>
+    <b-container v-if="examples">
       <b-row>
         <b-col xs="12">
-          <LineChart :examples="examples" :test="test"></LineChart>
+          <LineChart :indexes="indexes" :bitcoin="bitcoin"></LineChart>
         </b-col>
         <b-button @click="getData">Click</b-button>
       </b-row>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import topMenu from '~/components/topMenu.vue'
 import LineChart from '~/components/LineChart.vue'
 export default {
@@ -22,20 +23,21 @@ export default {
   },
   data() {
     return {
-      test: {},
-      examples: []
+      indexes: [],
+      bitcoin: []
     }
   },
-  mounted() {
+  created() {
     this.getData()
   },
   methods: {
-    getData() {
-      this.$axios.get('https://api.coinlore.com/api/tickers/').then((res) => {
+    async getData() {
+      await axios.get('https://api.coinlore.com/api/tickers/').then((res) => {
         // eslint-disable-next-line no-console
         console.log(res)
-        this.test = res
-        this.examples = res.data.data
+        this.bitcoin = res.data.data
+        // eslint-disable-next-line no-console
+        console.log(this.bitcoin)
       })
     }
   }

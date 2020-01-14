@@ -6,7 +6,7 @@ import { Line } from 'vue-chartjs'
 export default {
   extends: Line,
   props: {
-    examples: {
+    bitcoin: {
       type: Array,
       required: true
     }
@@ -15,7 +15,7 @@ export default {
     return {
       datacollection: {
         // Data to be represented on x-axis
-        labels: [this.examples[0].id],
+        labels: [this.bitcoin],
         datasets: [
           {
             label: 'Data One',
