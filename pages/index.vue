@@ -1,12 +1,11 @@
 <template>
   <div>
-    <topMenu></topMenu>
+    <topMenu style="margin-bottom: 50px"></topMenu>
     <b-container v-if="indexes">
       <b-row>
         <b-col xs="12">
           <LineChart :indexes="indexes" :usd="usd"></LineChart>
         </b-col>
-        <b-button @click="getData">Click</b-button>
       </b-row>
     </b-container>
   </div>

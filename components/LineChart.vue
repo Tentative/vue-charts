@@ -1,11 +1,12 @@
 <script>
 // Importing Line class from the vue-chartjs wrapper
-import { Line, Bar } from 'vue-chartjs'
+import { Line, Bar, Scatter } from 'vue-chartjs'
 
 // Exporting this so it can be used in other components
 export default {
   extends: Line,
   Bar,
+  Scatter,
   props: {
     usd: {
       type: Object,
@@ -24,7 +25,7 @@ export default {
         datasets: [
           {
             label: 'Data One',
-            backgroundColor: '',
+            backgroundColor: 'transparent',
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
@@ -33,7 +34,7 @@ export default {
           },
           {
             label: 'Data Two',
-            backgroundColor: '',
+            backgroundColor: 'transparent',
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
@@ -41,8 +42,8 @@ export default {
             data: [Math.floor(Math.random() * 9) + 1, 1, 3, 4]
           },
           {
-            label: 'Data Two',
-            backgroundColor: '',
+            label: 'Data Three',
+            backgroundColor: 'rgba(227, 64, 9, 0.3)',
             pointBackgroundColor: 'white',
             borderWidth: 1,
             pointBorderColor: '#249EBF',
@@ -68,7 +69,7 @@ export default {
           xAxes: [
             {
               gridLines: {
-                display: false
+                display: true
               }
             }
           ]
